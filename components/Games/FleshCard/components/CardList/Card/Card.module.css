@@ -1,0 +1,55 @@
+.card {
+  width: 300px;
+  height: 300px;
+  font-size: 1.5em;
+  /* transform: translateX(50%) rotateY(-10deg); */
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.innerCard {
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+}
+
+.card.showAnswer .innerCard {
+  transform: rotateX(180deg);
+}
+
+.innerCardFront,
+.innerCardBack {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+}
+
+.innerCardFront {
+  transform: rotateX(0deg);
+  z-index: 2;
+}
+
+.innerCardBack {
+  transform: rotateX(180deg);
+}
+
+.innerCardFront::after,
+.innerCardBack::after {
+  content: 'Flip';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #ddd;
+}
